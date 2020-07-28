@@ -1,6 +1,6 @@
 // webpack.config.js
 const path = require("path"); // connect path to webpack config
-
+const HtmlWebpackPlugin = require("html-webpack-plugin"); // connect plugin
 // we specified the location where Webpack will start bundling - it's the index.js file inside the src folder
 
 module.exports = {
@@ -21,5 +21,8 @@ module.exports = {
         exclude: "/node_modules/"
       }
       ]
-  }
+  }, 
+  plugins: [new HtmlWebpackPlugin({
+    template: "./src/index.html" // path to our index.html file
+  })] // add the array here
 };
