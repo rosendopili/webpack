@@ -36,8 +36,10 @@ module.exports = {
           test: /\.css$/,
         // use MiniCssExtractPlugin.loader и css-loader
         // when processing these files
-          loader:  [MiniCssExtractPlugin.loader, "css-loader"]
-      },
+        loader: [MiniCssExtractPlugin.loader, {  loader: "css-loader",
+        // add an options object
+        options: { importLoaders: 1 } }, "postcss-loader"]// add postcss-loader  
+     },
     ]
   }, 
   plugins: [
