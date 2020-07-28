@@ -1,3 +1,5 @@
+import "./styles/index.css"; // add import of the main stylesheets file
+
 console.log("Hello, Webpack!")
 
 let someStr = "I coded. I saved. I bundled.";

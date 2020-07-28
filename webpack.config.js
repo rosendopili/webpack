@@ -2,6 +2,9 @@
 const path = require("path"); // connect path to webpack config
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // connect plugin
 // we specified the location where Webpack will start bundling - it's the index.js file inside the src folder
+// connect mini-css-extract-plugin to the project
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
     entry: { main: "./src/index.js" },
@@ -28,9 +31,19 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader",
       },
+      {
+        // use these rules only for CSS files
+          test: /\.css$/,
+        // use MiniCssExtractPlugin.loader и css-loader
+        // when processing these files
+          loader:  [MiniCssExtractPlugin.loader, "css-loader"]
+      },
     ]
   }, 
-  plugins: [new HtmlWebpackPlugin({
-    template: "./src/index.html" // path to our index.html file
-  })] // add the array here
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html"
+    }),
+      new MiniCssExtractPlugin() // connect the plugin for merging CSS files
+  ]// add the array here
 };
